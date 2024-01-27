@@ -1,24 +1,19 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 
-
-export default function cards (src) {
-
-    async function getPokemon(){
-        const pokemonImg = await fetch('https://pokeapi.co/api/v2/pokemon/bulbasaur')
-        pokemonImg.json().then ((pokemonImg) => {
-            return pokemonImg.sprites.front_default
-        })
-    }
+function Cards(props){
     return (
-        i
-
-
+        <div className="card">
+            {props.image ? (
+                <img src = {props.image} alt = "pokemon"/>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
     )
-    
-
-
 }
 
-
+export { Cards };
 
 
