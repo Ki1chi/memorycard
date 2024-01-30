@@ -2,12 +2,22 @@
 import React from 'react';
 
 
-function Cards(props){
+function Cards({image}) {
     return (
-        <div className="card">
-            {props.image ? (<img src = {props.image.sprites.front_default} alt = "pokemon"/>) 
-            : ( <p>Loading...</p> )}
+        <div className ="container">
+            {image.map((pokemon, index) => (      
+                <div key = {index} className="items">
+                    <img 
+                        src ={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} 
+                        alt = {pokemon.name} 
+                    />
+                </div>
+            ))}
         </div>
+        // <div className="card">
+        //     {props.image ? (<img src = {props.image.sprites.front_default} alt = "pokemon"/>) 
+        //     : ( <p>Loading...</p> )}
+        // </div>
     )
 }
 

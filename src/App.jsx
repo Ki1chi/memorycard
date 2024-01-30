@@ -4,16 +4,19 @@ import { Cards } from "./cards.jsx"
 
 
 function App(){
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState([])
+
   useEffect(()=>{
     const fetchImage = async () => {
       try {
-        const response = await fetch ("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12");
+        const response = await fetch (`https://pokeapi.co/api/v2/pokemon/?limit=12`);
+        if (!response.ok) {
+          throw new Error(`Error! Status${response.status}`)
+        }
         const data = await response.json();
-        setImage(data)
-        console.log(data)
+        setImage(data.results)
       } catch (error){
-        console.error('Error fetching image:', error)
+        console.error('Error fetching Pokemon:', error)
       }
     }
     fetchImage();
@@ -22,10 +25,10 @@ function App(){
   
   return <div>
   <Cards image = {image} />
-  <Cards image = {image} />
+
   </div>
   
 
 }
 
-export default  App 
+export default  App; 
