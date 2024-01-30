@@ -5,13 +5,13 @@ import { Cards } from "./cards.jsx"
 
 function App(){
   const [image, setImage] = useState('')
-
   useEffect(()=>{
     const fetchImage = async () => {
       try {
-        const response = await fetch ('https://pokeapi.co/api/v2/pokemon/bulbasaur');
+        const response = await fetch ("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12");
         const data = await response.json();
-        setImage(data.sprites.front_default)
+        setImage(data)
+        console.log(data)
       } catch (error){
         console.error('Error fetching image:', error)
       }
@@ -20,7 +20,11 @@ function App(){
   }
   , [])
   
-  return <Cards image = {image} />
+  return <div>
+  <Cards image = {image} />
+  <Cards image = {image} />
+  </div>
+  
 
 }
 
