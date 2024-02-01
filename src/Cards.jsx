@@ -11,6 +11,7 @@ function Cards({image}) {
                         src ={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} 
                         alt = {pokemon.name}
                     />
+                    <p className="pokemonName">{pokemon.name}</p>
                 </div>
             ))}
         </div>

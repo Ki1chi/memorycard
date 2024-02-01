@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Cards } from "./cards.jsx"
+import { Cards } from "./Cards.jsx"
+import { Header } from "./Header.jsx"
 
 
 
@@ -9,7 +10,7 @@ function App(){
   useEffect(()=>{
     const fetchImage = async () => {
       try {
-        const response = await fetch (`https://pokeapi.co/api/v2/pokemon/?limit=12`);
+        const response = await fetch (`https://pokeapi.co/api/v2/pokemon/?limit=30`);
         if (!response.ok) {
           throw new Error(`Error! Status${response.status}`)
         }
@@ -23,10 +24,12 @@ function App(){
   }
   , [])
   
-  return <div>
-  <Cards image = {image} />
-
-  </div>
+  return (
+  
+  <div>
+    <Header title = "Pokemon Memory Game" score = "Score:" bestscore = "Best:" />
+    <Cards image = {image} />
+  </div>)
   
 
 }
