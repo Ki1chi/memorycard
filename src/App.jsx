@@ -27,7 +27,7 @@ function App(){
   return (
   
   <div>
-    <Header title = "Pokemon Memory Game" score = "Score:" bestscore = "Best:" />
+    <Header title = "Pokemon Memory Game" score = "Score:" bestscore = "Best:" instructions ="Earn points by clicking on an image, but don't select the same one you've seleted before!"/>
     <Cards image = {image} />
   </div>)
   
