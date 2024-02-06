@@ -6,7 +6,7 @@ import { Header } from "./Header.jsx"
 
 function App(){
   const [image, setImage] = useState([])
-
+  
   useEffect(()=>{
     const fetchImage = async () => {
       try {
@@ -23,15 +23,15 @@ function App(){
     fetchImage();
   }
   , [])
-  
   return (
   
   <div>
     <Header title = "Pokemon Memory Game" score = "Score:" bestscore = "Best:" instructions ="Earn points by clicking on an image, but don't select the same one you've seleted before!"/>
-    <Cards image = {image} />
-  </div>)
+    <Cards image = {image}/>
+  </div>
+  )
   
 
 }
 
-export default  App; 
+export default App; 
