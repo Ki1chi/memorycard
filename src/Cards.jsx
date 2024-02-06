@@ -10,7 +10,7 @@ function capitalizeFirst(string){
     return newString
 }
 
-function Cards({image}) {
+function Cards({image, onImageClick}) {
 
     return (
         <div className ="container">
@@ -18,7 +18,8 @@ function Cards({image}) {
                 <div key = {pokemon.name} className="items">
                     <img 
                         src ={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} 
-                        alt = {pokemon.name}
+                        alt = {capitalizeFirst(pokemon.name)}
+                        onClick={() => onImageClick(pokemon)}
                     />
                     <p className="pokemonName">{capitalizeFirst(pokemon.name)}</p>
                 </div>
@@ -27,6 +28,6 @@ function Cards({image}) {
     )
 }
 
-export { Cards };
+export {Cards};
 
 
