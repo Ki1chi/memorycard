@@ -11,10 +11,9 @@ function capitalizeFirst(string){
 }
 
 function Cards({image, onImageClick}) {
-
     return (
         <div className ="container">
-            {image.map((pokemon, index) => (   
+            {image.map((pokemon, index) => (
                 <div key = {pokemon.name} className="items">
                     <img 
                         src ={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} 
