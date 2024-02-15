@@ -9,6 +9,7 @@ import { Header } from "./Header.jsx"
 function App(){
   const [image, setImage] = useState([])
   const [score, setScore] = useState(0)
+  let winningScore = 20
 
   
   useEffect(()=>{
@@ -24,7 +25,7 @@ function App(){
         const pokemonNames = await data.results.map((pokemon) => pokemon.name)
 
         const shuffledPokemon = pokemonNames.sort(() => Math.random() - 0.5)
-        const randomSubset = shuffledPokemon.slice(0, 20)
+        const randomSubset = shuffledPokemon.slice(0, winningScore)
 
         pokemonDataList = await Promise.all (
           randomSubset.map(async(name) => {
@@ -51,13 +52,18 @@ function App(){
 
   const handleImageClick = (clickedPokemon) => {
 
+    if(score == winningScore - 1) {
+      alert("You Win.")
+      location.reload()
+    }
+
     if(clickedPokemon.isSelected === false) {
       setScore(score + 1)
       
     }
     if(clickedPokemon.isSelected === true) {
       setScore(0)
-      alert("You lost... Try again")
+      alert("You lost... Try again.")
       location.reload()
     }
 
@@ -75,7 +81,7 @@ function App(){
   return (
   
   <div>
-    <Header title = "Pokemon Memory Game" score = {`Score: ${score}`} bestscore = {`Best: ${score}`} instructions ="Earn points by clicking on an image, but don't select the same one you've seleted before!"/>
+    <Header title = "Pokemon Memory Game" score = {`Score: ${score}`} instructions ="Earn points by clicking on an image, but don't select the same one you've seleted before!"/>
     <Cards image={image} onImageClick={handleImageClick}/>
   </div>
   )
