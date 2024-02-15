@@ -37,7 +37,6 @@ function App(){
             }
           })
         )
-        console.log(pokemonDataList)
         
         setImage(pokemonDataList)
         
@@ -52,16 +51,20 @@ function App(){
 
   const handleImageClick = (clickedPokemon) => {
 
-    if(clickedPokemon.isSelected === true) {
-      setScore(0)
+    if(clickedPokemon.isSelected === false) {
+      setScore(score + 1)
       
     }
+    if(clickedPokemon.isSelected === true) {
+      setScore(0)
+      alert("You lost... Try again")
+      location.reload()
+    }
+
     setImage((prevPokemon) => {
       const updatedPokemon = prevPokemon.map((pokemon) => 
-      pokemon.name === clickedPokemon.name ? {...pokemon, isSelected: true} : pokemon
-      );
+      pokemon.name === clickedPokemon.name ? {...pokemon, isSelected: true} : pokemon);
 
-      
       const shuffledPokemonList = updatedPokemon.sort(() => Math.random() - 0.5);
       
       return shuffledPokemonList
